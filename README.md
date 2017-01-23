@@ -33,6 +33,15 @@ Le librerie principali sono:
 
 Si veda la sezione [google-drive][google-drive/README.md].
 
+
+## GRIB API
+
+Si veda la sezione [gribapi][gribapi/README.md].
+
+## Esempi per dati ERG5
+
+Si veda la sezione [erg5][erg5/README.md].
+
 ## Licenza
 
 GPLv3
