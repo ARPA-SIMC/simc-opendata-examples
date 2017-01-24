@@ -6,7 +6,7 @@ e raggruppati per giorno. Ogni file è nella forma `erg5.YYYYmmddHHMM.grib2`.
 
 ## Singolo punto di radiazione giornaliera
 
-Lo script è [radiazione-singlepoint.py](radiazione-singlepoint.py).
+Lo script è [erg5-radiazione-giornaliera-punto-singolo.py](erg5-radiazione-giornaliera-punto-singolo.py).
 
 L'esempio di utilizzo è strutturato in:
 
