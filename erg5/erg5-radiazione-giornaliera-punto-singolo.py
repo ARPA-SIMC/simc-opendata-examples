@@ -20,9 +20,7 @@ License: GPLv3
 Copyright (C) 2017 Arpae-SIMC
 """
 
-import os
 import argparse
-import tempfile
 
 import httplib2
 import apiclient
@@ -143,6 +141,7 @@ def get_grib_radiation_daily(filename):
                 return gid
 
     return None
+
 
 def parse_datestring(datestr):
     """Semplice parser per le date nella forma YYYY-mm-dd"""

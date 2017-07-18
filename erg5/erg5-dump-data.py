@@ -31,9 +31,7 @@ License: GPLv3
 Copyright (C) 2017 Arpae-SIMC
 """
 
-import os
 import argparse
-import tempfile
 import json
 import csv
 
@@ -174,9 +172,7 @@ def coords_to_cellid(gid, lon, lat):
     Se il punto è fuori dalla griglia, restituisce None.
     """
     lat0 = gribapi.grib_get_double(gid, "latitudeOfFirstGridPointInDegrees")
-    lat1 = gribapi.grib_get_double(gid, "latitudeOfLastGridPointInDegrees")
     lon0 = gribapi.grib_get_double(gid, "longitudeOfFirstGridPointInDegrees")
-    lon1 = gribapi.grib_get_double(gid, "longitudeOfLastGridPointInDegrees")
     ncol = gribapi.grib_get_long(gid, "Ni")
     nrow = gribapi.grib_get_long(gid, "Nj")
     latstep = gribapi.grib_get(gid, "jDirectionIncrementInDegrees")
