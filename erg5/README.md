@@ -19,7 +19,7 @@ L'esempio di utilizzo è strutturato in:
    dedicata alle gribapi](../gribapi/README.md).
 
 
-## Dump in CSV e GeoJSON del pacco dati
+## Dump in CSV e GeoJSON di tutti i dati di uno specifico giorno.
 
 Lo script è [erg5-dump-data.py](erg5-dump-data.py).
 
@@ -30,4 +30,5 @@ L'esempio di utilizzo è strutturato in:
    maggiori informazioni sul setup.
 2. Dump per ogni messaggio GRIB in CSV e GeoJSON. Il file è selezionato in base
    al match di una serie di chiavi GRIB (si veda la funzione `get_product_name`
-   all'interno dello script).
+   all'interno dello script). Usiamo i binding Python delle `grib_api`. Si veda
+   [la sezione dedicata alle gribapi](../gribapi/README.md).
