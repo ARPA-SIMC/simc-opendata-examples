@@ -224,7 +224,7 @@ def get_items(gid):
 
 def dump_csv(gid, filename):
     """Scrive i dati del GRIB nel file passato come parametro."""
-    with open(filename, "w") as fp:
+    with open(filename, "a") as fp:
         writer = csv.DictWriter(fp, ["cellid", "date", "time", "lat", "lon", "value"])
         items = get_items(gid)
         writer.writeheader()
@@ -233,7 +233,7 @@ def dump_csv(gid, filename):
 
 def dump_json(gid, filename):
     """Scrive i dati del GRIB nel file passato come parametro."""
-    with open(filename, "w") as fp:
+    with open(filename, "a") as fp:
         items = get_items(gid)
         json.dump({
             "type": "FeatureCollection",
