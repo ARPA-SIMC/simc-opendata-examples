@@ -224,6 +224,11 @@ def get_items(gid):
 
 def dump_csv(gid, filename):
     """Scrive i dati del GRIB nel file passato come parametro."""
+    # Il file viene aperto in append in quanto potremmo avere più messaggi GRIB
+    # che si riferiscono al medesimo file. E.g., nel pacco dati di un
+    # certo giorno ci sono 24 messaggi GRIB che si riferiscono alla temperatura
+    # media oraria (00, 01, 02, ..., 23): di conseguenza il file associato verrà
+    # aperto in scrittura 24 volte.
     with open(filename, "a") as fp:
         writer = csv.DictWriter(fp, ["cellid", "date", "time", "lat", "lon", "value"])
         items = get_items(gid)
@@ -233,6 +238,11 @@ def dump_csv(gid, filename):
 
 def dump_json(gid, filename):
     """Scrive i dati del GRIB nel file passato come parametro."""
+    # Il file viene aperto in append in quanto potremmo avere più messaggi GRIB
+    # che si riferiscono al medesimo file. E.g., nel pacco dati di un
+    # certo giorno ci sono 24 messaggi GRIB che si riferiscono alla temperatura
+    # media oraria (00, 01, 02, ..., 23): di conseguenza il file associato verrà
+    # aperto in scrittura 24 volte.
     with open(filename, "a") as fp:
         items = get_items(gid)
         json.dump({
