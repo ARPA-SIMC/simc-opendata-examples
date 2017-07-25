@@ -3,7 +3,11 @@
 """Esempio di utilizzo dei dati ERG5.
 
 Questo script permette di scaricare il pacco dati del giorno dal dataset ERG5,
-e fare il dump in CSV e GeoJSON dei messaggi GRIB, suddivisi per prodotto.
+e fare il dump in CSV e GeoJSON dei messaggi GRIB, suddivisi per prodotto e per
+istante di riferimento.
+
+I file prodotti hanno path nella forma outdir/prodotto_data_ora.csv e
+outdir/prodotto_data_ora.json.
 
 Le colonne dei file CSV e GeoJSON prodotti sono:
 
@@ -118,6 +122,23 @@ def get_product_name(gid):
 
     # Ci sono solo due "prodotti" definiti.
     products = {
+        # Temperatura media oraria osservata a 1.8m dal suolo (K)
+        "temp_hourly_avg": {
+            "discipline": 0,
+            "parameterCategory": 0,
+            "parameterNumber": 0,
+            "typeOfFirstFixedSurface": 103,
+            "scaleFactorOfFirstFixedSurface": 3,
+            "scaledValueOfFirstFixedSurface": 1800,
+            "typeOfSecondFixedSurface": 255,
+            "forecastTime": 0,
+            "indicatorOfUnitOfTimeRange": 1,
+            "productDefinitionTemplateNumber": 8,
+            "typeOfStatisticalProcessing": 0,
+            "indicatorOfUnitForTimeRange": 1,
+            "lengthOfTimeRange": 1,
+            "typeOfProcessedData": 0,
+        },
         # Temperatura media giornaliera osservata a 1.8m dal suolo (K)
         "temp_daily_avg": {
             "discipline": 0,
@@ -222,28 +243,26 @@ def get_items(gid):
     return items
 
 
-def dump_csv(gid, filename):
-    """Scrive i dati del GRIB nel file passato come parametro."""
-    # Il file viene aperto in append in quanto potremmo avere più messaggi GRIB
-    # che si riferiscono al medesimo file. E.g., nel pacco dati di un
-    # certo giorno ci sono 24 messaggi GRIB che si riferiscono alla temperatura
-    # media oraria (00, 01, 02, ..., 23): di conseguenza il file associato verrà
-    # aperto in scrittura 24 volte.
-    with open(filename, "a") as fp:
+def dump_csv(gid, outdir, suffix):
+    """Dump dei dati in CSV. Il path del file CSV è nella forma
+    outdir/suffix_data_ora.csv."""
+    dataDate = gribapi.grib_get_string(gid, "dataDate")
+    dataTime = gribapi.grib_get_string(gid, "dataTime")
+    filename = "{}/{}_{}_{}.csv".format(outdir, suffix, dataDate, dataTime)
+    with open(filename, "w") as fp:
         writer = csv.DictWriter(fp, ["cellid", "date", "time", "lat", "lon", "value"])
         items = get_items(gid)
         writer.writeheader()
         writer.writerows(items)
 
 
-def dump_json(gid, filename):
-    """Scrive i dati del GRIB nel file passato come parametro."""
-    # Il file viene aperto in append in quanto potremmo avere più messaggi GRIB
-    # che si riferiscono al medesimo file. E.g., nel pacco dati di un
-    # certo giorno ci sono 24 messaggi GRIB che si riferiscono alla temperatura
-    # media oraria (00, 01, 02, ..., 23): di conseguenza il file associato verrà
-    # aperto in scrittura 24 volte.
-    with open(filename, "a") as fp:
+def dump_json(gid, outdir, suffix):
+    """Dump dei dati in GeoJSON. Il path del file GeoJSON è nella forma
+    outdir/suffix_data_ora.json."""
+    dataDate = gribapi.grib_get_string(gid, "dataDate")
+    dataTime = gribapi.grib_get_string(gid, "dataTime")
+    filename = "{}/{}_{}_{}.json".format(outdir, suffix, dataDate, dataTime)
+    with open(filename, "w") as fp:
         items = get_items(gid)
         json.dump({
             "type": "FeatureCollection",
@@ -297,5 +316,5 @@ if __name__ == '__main__':
             # Verifico che sia tra i prodotti che mi interessano
             product_name = get_product_name(gid)
             if product_name is not None:
-                dump_csv(gid, "{}/{}.csv".format(args.outdir, product_name))
-                dump_json(gid, "{}/{}.json".format(args.outdir, product_name))
+                dump_csv(gid, args.outdir, product_name)
+                dump_json(gid, args.outdir, product_name)
