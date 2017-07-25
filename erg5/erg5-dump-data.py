@@ -243,12 +243,12 @@ def get_items(gid):
     return items
 
 
-def dump_csv(gid, outdir, suffix):
+def dump_csv(gid, outdir, prefix):
     """Dump dei dati in CSV. Il path del file CSV è nella forma
-    outdir/suffix_data_ora.csv."""
+    outdir/prefix_data_ora.csv."""
     dataDate = gribapi.grib_get_string(gid, "dataDate")
     dataTime = gribapi.grib_get_string(gid, "dataTime")
-    filename = "{}/{}_{}_{}.csv".format(outdir, suffix, dataDate, dataTime)
+    filename = "{}/{}_{}_{}.csv".format(outdir, prefix, dataDate, dataTime)
     with open(filename, "w") as fp:
         writer = csv.DictWriter(fp, ["cellid", "date", "time", "lat", "lon", "value"])
         items = get_items(gid)
@@ -256,12 +256,12 @@ def dump_csv(gid, outdir, suffix):
         writer.writerows(items)
 
 
-def dump_json(gid, outdir, suffix):
+def dump_json(gid, outdir, prefix):
     """Dump dei dati in GeoJSON. Il path del file GeoJSON è nella forma
-    outdir/suffix_data_ora.json."""
+    outdir/prefix_data_ora.json."""
     dataDate = gribapi.grib_get_string(gid, "dataDate")
     dataTime = gribapi.grib_get_string(gid, "dataTime")
-    filename = "{}/{}_{}_{}.json".format(outdir, suffix, dataDate, dataTime)
+    filename = "{}/{}_{}_{}.json".format(outdir, prefix, dataDate, dataTime)
     with open(filename, "w") as fp:
         items = get_items(gid)
         json.dump({
