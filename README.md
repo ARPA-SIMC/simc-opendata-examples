@@ -22,7 +22,7 @@ I linguaggi di programmazione principali sono:
 
 Le librerie principali sono:
 
-* [grib-api](https://software.ecmwf.int/wiki/display/GRIB/Home)
+* [ecCodes](https://confluence.ecmwf.int/display/ECC)
 * [arkimet](https://github.com/ARPA-SIMC/arkimet/)
 * [wreport](https://github.com/ARPA-SIMC/wreport/)
 * [dballe](https://github.com/ARPA-SIMC/dballe/)
@@ -34,9 +34,9 @@ Le librerie principali sono:
 Si veda la sezione [google-drive](google-drive/README.md).
 
 
-## GRIB API
+## ecCodes
 
-Si veda la sezione [gribapi](gribapi/README.md).
+Si veda la sezione [eccodes](eccodes/README.md).
 
 
 ## Esempi per dati ERG5
