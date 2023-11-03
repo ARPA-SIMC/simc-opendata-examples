@@ -1,5 +1,7 @@
 # ERG5
 
+Il dataset è disponibile all'URL https://dati.arpae.it/dataset/erg5-interpolazione-su-griglia-di-dati-meteo.
+
 I dati ERG5 sono pubblicati in due formati:
 
 - Un file al giorno in formato `GRIB2` all'URL
