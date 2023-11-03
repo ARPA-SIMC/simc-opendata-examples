@@ -1,7 +1,8 @@
 # ERG5
 
-I dati ERG5 sono pubblicati quotidianamente su Google Drive in formato `GRIB2`
-e raggruppati per giorno. Ogni file è nella forma `erg5.YYYYmmddHHMM.grib2`.
+I dati ERG5 sono pubblicati quotidianamente all'URL
+https://dati-simc.arpae.it/opendata/erg5v2/grib in formato `GRIB2` e sono
+raggruppati per giorno. Ogni file è nella forma `erg5.YYYYmmddHHMM.grib2`.
 
 
 ## Singolo punto di radiazione giornaliera
