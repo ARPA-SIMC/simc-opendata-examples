@@ -1,17 +1,17 @@
 # Esempi di utilizzo per i dati Opendata di Arpae-SIMC
 
-
 Questo repository contiene esempi di utilizzo dei dataset del Servizio Idro
-Meteo Clima di Arpae contenuti all'interno del [portale
+Meteo Clima di Arpae (Arpae-SIMC) contenuti all'interno del [portale
 dell'Agenzia](https://dati.arpae.it).
 
 Gli esempi sono strutturati sulla base dei linguaggi e delle librerie
-utilizzate internamente al Servizio.
+utilizzate internamente ad Arpae-SIMC.
 
 ## Linguaggi e librerie di riferimento
 
-La maggior parte delle nostre applicazioni sono eseguite in ambiente GNU/Linux.
-La nostra distribuzione di riferimento è [Fedora](https://getfedora.org/).
+La maggior parte delle applicazioni di Arpae-SIMC sono eseguite in ambiente GNU/Linux.
+Le nostre distribuzioni di riferimento sono [Fedora](https://getfedora.org/) e
+[Rocky Linux](https://rockylinux.org/).
 
 I linguaggi di programmazione principali sono:
 
