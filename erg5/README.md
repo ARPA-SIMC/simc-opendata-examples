@@ -10,6 +10,14 @@ I dati ERG5 sono pubblicati in due formati:
   path `IDCELLA/IDCELLA_YYYY.zip`, che contiene due file: uno giornaliero
   `IDCELLA_YYYY_d.csv` e uno orario `IDCELLA_YYYY_h.csv`.
 
+Gli esempi sono scritti in Python e usano le seguenti librerie:
+
+- `ecCodes`: https://pypi.org/project/eccodes/
+- `requests`: https://pypi.org/project/requests/
+
+Tutti gli esempi sono eseguibili da riga di comando e, oltre alla descrizione
+nel presente documento, è possibile sapere quali sono i parametri usando
+l'opzione `--help`.
 
 ## Singolo punto di radiazione giornaliera da GRIB
 
@@ -21,7 +29,6 @@ L'esempio di utilizzo è strutturato in:
 2. Lettura dei dati, selezione di un particolare prodotto e estrazione di un
    singolo punto. Usiamo i binding Python di ecCodes. Si veda [la sezione
    dedicata a ecCodes](../eccodes/README.md).
-
 
 ## Dump in CSV e GeoJSON di tutti i dati di uno specifico giorno da GRIB
 
